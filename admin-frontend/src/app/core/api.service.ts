@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Observable } from 'rxjs';
-
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private baseUrl = 'http://localhost:5050/api';
+  private baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient, private auth: AuthService) {
-    // Warm up Atlas connection after refresh/login
+
     if (this.auth.getToken()) {
       this.getDashboardStats().subscribe({
         next: () => {},
@@ -30,14 +30,12 @@ export class ApiService {
     });
   }
 
-  // Dashboard
   getDashboardStats(): Observable<any> {
     return this.http.get(`${this.baseUrl}/dashboard/stats`, {
       headers: this.getHeaders()
     });
   }
 
-  // Users
   getUsers(): Observable<any> {
     return this.http.get(`${this.baseUrl}/users`, {
       headers: this.getHeaders()
