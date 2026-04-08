@@ -50,11 +50,16 @@
             <span>{{ errorMessage }}</span>
           </div>
 
-          <button mat-raised-button color="primary" class="login-btn"
-            (click)="onLogin()" [disabled]="isLoading">
-            <mat-spinner *ngIf="isLoading" diameter="20"></mat-spinner>
-            <span *ngIf="!isLoading">Sign In</span>
-          </button>
+          <button
+  mat-raised-button
+  color="primary"
+  class="login-btn"
+  (click)="onLogin()"
+  [disabled]="isLoading"
+>
+  <mat-spinner *ngIf="isLoading" diameter="20"></mat-spinner>
+  <span>{{ isLoading ? 'Signing In...' : 'Sign In' }}</span>
+</button>
         </div>
 
         <div class="demo-credentials">
