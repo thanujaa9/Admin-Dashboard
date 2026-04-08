@@ -1,0 +1,23 @@
+<div class="navbar">
+  <div class="navbar-left">
+    <h2 class="page-title">Admin Dashboard</h2>
+  </div>
+
+  <div class="navbar-right">
+    <div class="user-menu" [matMenuTriggerFor]="userMenu">
+      <div class="avatar">{{ user?.name?.charAt(0) | uppercase }}</div>
+      <div class="user-info">
+        <span class="name">{{ user?.name }}</span>
+        <span class="role">{{ user?.role | titlecase }}</span>
+      </div>
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </div>
+
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </div>
+</div>

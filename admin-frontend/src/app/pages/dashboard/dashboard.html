@@ -1,0 +1,99 @@
+<div class="page-container">
+
+  <div class="page-header">
+    <h2>Dashboard Overview</h2>
+    <span class="date">{{ today | date:'fullDate' }}</span>
+  </div>
+
+  <div *ngIf="isLoading" class="skeleton-wrapper">
+    <div class="stat-cards">
+      <div class="skeleton-card" *ngFor="let i of [1,2,3,4]"></div>
+    </div>
+    <div class="charts-grid" style="margin-top: 20px">
+      <div class="skeleton-chart"></div>
+      <div class="skeleton-chart"></div>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading">
+
+    <div class="stat-cards">
+
+      <div class="stat-card">
+        <div class="stat-icon blue">
+          <mat-icon>people</mat-icon>
+        </div>
+        <div class="stat-info">
+          <h3>Total Users</h3>
+          <div class="stat-value">{{ summary.totalUsers }}</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon cyan">
+          <mat-icon>admin_panel_settings</mat-icon>
+        </div>
+        <div class="stat-info">
+          <h3>Admins</h3>
+          <div class="stat-value">{{ summary.adminCount }}</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon green">
+          <mat-icon>attach_money</mat-icon>
+        </div>
+        <div class="stat-info">
+          <h3>Total Sales</h3>
+          <div class="stat-value">₹{{ summary.totalSales }}</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon orange">
+          <mat-icon>person_add</mat-icon>
+        </div>
+        <div class="stat-info">
+          <h3>Total Signups</h3>
+          <div class="stat-value">{{ summary.totalSignups }}</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="charts-grid">
+
+      <div class="chart-card">
+        <h3>Sales Overview</h3>
+        <canvas baseChart
+          [data]="salesChartData"
+          [options]="salesChartOptions"
+          [type]="'line'">
+        </canvas>
+      </div>
+
+      <div class="chart-card">
+        <h3>Monthly Signups</h3>
+        <canvas baseChart
+          [data]="signupsChartData"
+          [options]="signupsChartOptions"
+          [type]="'bar'">
+        </canvas>
+      </div>
+
+      <div class="chart-card pie-card">
+        <h3>User Distribution</h3>
+        <div class="pie-wrapper">
+          <canvas baseChart
+            [data]="pieChartData"
+            [options]="pieChartOptions"
+            [type]="'pie'">
+          </canvas>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

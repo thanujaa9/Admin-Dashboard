@@ -1,0 +1,71 @@
+.navbar {
+  height: 64px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+
+  .page-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1A237E;
+  }
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 10px;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #f5f7fa;
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #1A237E;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .user-info {
+    display: flex;
+    flex-direction: column;
+
+    .name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .role {
+      font-size: 11px;
+      color: #888;
+    }
+  }
+
+  mat-icon {
+    color: #888;
+  }
+}

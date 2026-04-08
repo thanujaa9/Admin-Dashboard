@@ -1,0 +1,74 @@
+<div class="login-wrapper">
+  <div class="login-left">
+    <div class="brand">
+      <mat-icon class="brand-icon">dashboard</mat-icon>
+      <h1>AdminPanel</h1>
+      <p>Manage your business with powerful analytics and controls</p>
+    </div>
+    <div class="features">
+      <div class="feature-item">
+        <mat-icon>bar_chart</mat-icon>
+        <span>Real-time Analytics</span>
+      </div>
+      <div class="feature-item">
+        <mat-icon>people</mat-icon>
+        <span>User Management</span>
+      </div>
+      <div class="feature-item">
+        <mat-icon>security</mat-icon>
+        <span>Role-based Access Control</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="login-right">
+    <mat-card class="login-card">
+      <mat-card-header>
+        <mat-card-title>Welcome Back</mat-card-title>
+        <mat-card-subtitle>Sign in to your admin account</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="form-group">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email Address</mat-label>
+            <input matInput type="email" [(ngModel)]="email"
+              placeholder="admin@demo.com" (keyup.enter)="onLogin()" />
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hidePassword ? 'password' : 'text'"
+              [(ngModel)]="password" (keyup.enter)="onLogin()" />
+            <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+              <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+          </mat-form-field>
+
+          <div class="error-msg" *ngIf="errorMessage">
+            <mat-icon>error_outline</mat-icon>
+            <span>{{ errorMessage }}</span>
+          </div>
+
+          <button mat-raised-button color="primary" class="login-btn"
+            (click)="onLogin()" [disabled]="isLoading">
+            <mat-spinner *ngIf="isLoading" diameter="20"></mat-spinner>
+            <span *ngIf="!isLoading">Sign In</span>
+          </button>
+        </div>
+
+        <div class="demo-credentials">
+          <p>Demo Credentials</p>
+          <div class="cred-row">
+            <span class="badge admin">Admin</span>
+            <span>admin@demo.com / admin123</span>
+          </div>
+          <div class="cred-row">
+            <span class="badge user">User</span>
+            <span>priya@demo.com / user123</span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

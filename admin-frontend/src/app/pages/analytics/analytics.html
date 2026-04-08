@@ -1,0 +1,107 @@
+<div class="page-container">
+
+  <div class="page-header">
+    <h2>Analytics & Reports</h2>
+    <span class="subtitle">Data overview from your seeded metrics</span>
+  </div>
+
+  <div *ngIf="isLoading" class="skeleton-wrapper">
+    <div class="summary-strip">
+      <div class="skeleton-card" *ngFor="let i of [1,2,3,4]"></div>
+    </div>
+    <div class="charts-grid" style="margin-top: 20px">
+      <div class="skeleton-chart wide"></div>
+      <div class="skeleton-chart wide"></div>
+      <div class="skeleton-chart wide"></div>
+      <div class="skeleton-chart"></div>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading">
+
+    <div class="summary-strip">
+      <div class="strip-item">
+        <mat-icon>people</mat-icon>
+        <div>
+          <span class="strip-value">{{ summary.totalUsers }}</span>
+          <span class="strip-label">Total Users</span>
+        </div>
+      </div>
+      <div class="strip-item">
+        <mat-icon>attach_money</mat-icon>
+        <div>
+          <span class="strip-value">₹{{ summary.totalSales }}</span>
+          <span class="strip-label">Total Sales</span>
+        </div>
+      </div>
+      <div class="strip-item">
+        <mat-icon>person_add</mat-icon>
+        <div>
+          <span class="strip-value">{{ summary.totalSignups }}</span>
+          <span class="strip-label">Total Signups</span>
+        </div>
+      </div>
+      <div class="strip-item">
+        <mat-icon>admin_panel_settings</mat-icon>
+        <div>
+          <span class="strip-value">{{ summary.adminCount }}</span>
+          <span class="strip-label">Admins</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="charts-grid">
+
+      <div class="chart-card wide">
+        <h3>
+          <mat-icon>show_chart</mat-icon>
+          Sales Trend
+        </h3>
+        <canvas baseChart
+          [data]="salesTrendData"
+          [options]="salesTrendOptions"
+          [type]="'line'">
+        </canvas>
+      </div>
+
+      <div class="chart-card wide">
+        <h3>
+          <mat-icon>bar_chart</mat-icon>
+          Signup Trends
+        </h3>
+        <canvas baseChart
+          [data]="signupsTrendData"
+          [options]="signupsTrendOptions"
+          [type]="'bar'">
+        </canvas>
+      </div>
+
+      <div class="chart-card wide">
+        <h3>
+          <mat-icon>trending_up</mat-icon>
+          Active Users Trend
+        </h3>
+        <canvas baseChart
+          [data]="activeUsersData"
+          [options]="activeUsersOptions"
+          [type]="'line'">
+        </canvas>
+      </div>
+
+      <div class="chart-card">
+        <h3>
+          <mat-icon>donut_large</mat-icon>
+          Sales vs Signups Ratio
+        </h3>
+        <div class="donut-wrapper">
+          <canvas baseChart
+            [data]="ratioChartData"
+            [options]="ratioChartOptions"
+            [type]="'doughnut'">
+          </canvas>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

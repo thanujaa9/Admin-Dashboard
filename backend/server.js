@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+
+mongoose.set('bufferCommands', false);
 require('dotenv').config();
 
 const app = express();
@@ -19,10 +21,15 @@ app.get('/', (req, res) => {
 const PORT = process.env.PORT || 5050;
 const URI = process.env.MONGO_URI;
 
-mongoose.connect(URI)
+mongoose.connect(URI, {
+  serverSelectionTimeoutMS: 10000,
+  socketTimeoutMS: 45000,
+  maxPoolSize: 10,
+})
   .then(() => {
+    console.log('MongoDB Connected');
     app.listen(PORT, () => {
       console.log(`Server started on port ${PORT}`);
     });
   })
-  .catch(err => console.error(err));
+  .catch(err => console.error('MongoDB connection error:', err));
