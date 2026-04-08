@@ -135,7 +135,7 @@ cd admin-dashboard
 ### 2. Backend Setup
 
 ```bash
-cd server
+cd backend
 npm install
 ```
 
@@ -218,7 +218,7 @@ You need two terminals running simultaneously:
 
 **Terminal 1 — Backend:**
 ```bash
-cd server && node server.js
+cd backend && node server.js
 ```
 
 **Terminal 2 — Frontend:**
