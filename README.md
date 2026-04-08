@@ -67,45 +67,46 @@ A full-stack MEAN (MongoDB, Express.js, Angular, Node.js) admin dashboard with r
 - Seed script to populate demo data instantly
 
 ---
-
 ## Project Structure
+
+```text
 admin-dashboard/
 ├── server/                         # Node.js + Express backend
 │   ├── models/
-│   │   ├── User.js                # User schema with roles and authentication data
-│   │   └── Metric.js              # Stores analytics and chart data
+│   │   ├── User.js                 # User schema with roles and authentication data
+│   │   └── Metric.js               # Stores analytics and chart data
 │   │
 │   ├── routes/
-│   │   ├── auth.js                # Login and authentication routes
-│   │   ├── dashboard.js           # Dashboard analytics endpoints
-│   │   └── users.js               # User management endpoints
+│   │   ├── auth.js                 # Login and authentication routes
+│   │   ├── dashboard.js            # Dashboard analytics endpoints
+│   │   └── users.js                # User management endpoints
 │   │
 │   ├── middleware/
-│   │   ├── auth.js                # JWT authentication middleware
-│   │   └── admin.js               # Admin role authorization middleware
+│   │   ├── auth.js                 # JWT authentication middleware
+│   │   └── admin.js                # Admin role authorization middleware
 │   │
-│   ├── server.js                  # Main Express server entry point
-│   ├── seed.js                    # Script to populate demo data
-│   └── .env                       # Environment variables
+│   ├── server.js                   # Main Express server entry point
+│   ├── seed.js                     # Script to populate demo data
+│   │   └── .env                    # Environment variables
 │
-└── admin-frontend/                # Angular frontend
+└── admin-frontend/                 # Angular frontend
     └── src/
         └── app/
             ├── core/
-            │   ├── auth.service.ts    # Handles login, logout, token storage
-            │   ├── api.service.ts     # Centralized API calls
-            │   └── auth.guard.ts      # Protects authenticated routes
+            │   ├── auth.service.ts # Handles login, logout, token storage
+            │   ├── api.service.ts  # Centralized API calls
+            │   └── auth.guard.ts   # Protects authenticated routes
             │
             ├── layout/
-            │   ├── main-layout/       # Main application layout wrapper
-            │   ├── sidebar/           # Sidebar navigation component
-            │   └── navbar/            # Top navigation bar component
+            │   ├── main-layout/    # Main application layout wrapper
+            │   ├── sidebar/        # Sidebar navigation component
+            │   └── navbar/         # Top navigation bar component
             │
             └── pages/
-                ├── login/             # Login page
-                ├── dashboard/         # Dashboard with charts and summary cards
-                ├── users/             # User management page
-                └── analytics/         # Analytics and reporting page
+                ├── login/          # Login page
+                ├── dashboard/      # Dashboard with charts and summary cards
+                ├── users/          # User management page
+                └── analytics/      # Analytics and reporting page
 
 ---
 
